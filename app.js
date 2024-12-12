@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express');
-const testRoute = require('./src/routes/testRoute'); //Agregar rutas 
+const testRoute = require('./src/routes/Empleados'); //Agregar rutas 
 const conn = require('./src/db/dbConfig') 
 
 const app = express();
