@@ -20,12 +20,13 @@ async function connectionDB() {
         try{
             pool = await sql.connect(configBD);
             console.log(`Connection SUCCESS - ${process.env.DBDATABASE}`);
-            return pool;
+            
         }catch{
-            console.log(`Connection FAILED - ${process.env.DBDATABASE}`);
+            console.error(`Connection FAILED - ${process.env.DBDATABASE}`);
+            throw new Error("Database connection failed");
         }
-        
     }
+    return pool;
 }
 
 async function shutdown(){
