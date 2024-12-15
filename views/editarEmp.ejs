@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<%- include('partial/PageConfig', { title:"Lista de Empleados" }) %>
+<%- include('partial/Header') %>
+        <div class="container mt-4">
+            <h2 class="mb-4">Editar Información del Empleado</h2>
+            <form action="/Empleados/updEmpleados">
+                <% Object.entries(Empleado).forEach(([key, value]) => { %>
+                <div class="mb-3">
+                    <label for="<%= key %>" class="form-label"><%= key %></label>
+                    
+                    <% if (key === 'ID') { %>
+                        <input 
+                            type="text" 
+                            id="<%= key %>" 
+                            class="form-control" 
+                            value="<%= value %>" 
+                            readonly disabled>
+                        <input 
+                            type="hidden" 
+                            name="<%= key %>" 
+                            value="<%= value %>">
+                    <% } else if (key === 'Sexo') { %>
+                        <select 
+                            id="<%= key %>" 
+                            class="form-select" 
+                            name="<%= key %>">
+                            <option value="M" <%= value === 'M' ? 'selected' : '' %>>M</option>
+                            <option value="F" <%= value === 'F' ? 'selected' : '' %>>F</option>
+                        </select>
+                    <% } else if (key === 'FechaNacimiento') { %>
+                        <input 
+                            type="date" 
+                            id="<%= key %>" 
+                            class="form-control" 
+                            name="<%= key %>" 
+                            value="<%= value.toISOString().split('T')[0] %>">
+                    <% } else { %>
+                        <input 
+                            type="text" 
+                            id="<%= key %>" 
+                            class="form-control" 
+                            name="<%= key %>" 
+                            value="<%= value %>">
+                    <% } %>
+                </div>
+                <% }); %>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <a href="/" class="btn btn-secondary">Regresar</a>
+                </div>
+            </form>
+        </div>
+        <script src="/js/editarEmp.js"></script>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<%- include('partial/PageConfig', { title:"Lista de Empleados" }) %>
+<%- include('partial/Header') %>
+        <div class="card-body">
+            <div class="alert alert-danger" role="alert" id="emp" data-id="<%=Empleado.ID%>">
+                ¿Desea dar de baja el empleado: <%= Empleado.Nombre + ' ' +Empleado.Apellido %> 
+            </div>
+            <button id="eliminarEmp" class="btn btn-danger">Eliminar Empleado</button> 
+            <a href="/" class="btn btn-secondary">Regresar</a>
+        </div>
+    </body>
+    <script src="/js/elimEmp.js"></script>
+</html>

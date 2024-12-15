@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<%- include('partial/PageConfig', { title:"Lista de Empleados" }) %>
+<%- include('partial/Header') %>
+
+        <div class="container mt-4">
+            <h2 class="mb-4">Editar Información del Empleado</h2>
+
+            <!-- Formulario -->
+            <form action="/Empleados/insertEmpleados">
+                <div class="mb-3">
+                    <label for="ID" class="form-label">ID</label>
+                        <input 
+                            type="text" 
+                            id="ID" 
+                            class="form-control" 
+                            name="ID" 
+                            value="">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="Nombre" class="form-label">Nombre</label>
+                    
+                        <input 
+                            type="text" 
+                            id="Nombre" 
+                            class="form-control" 
+                            name="Nombre" 
+                            value=>
+                    
+                </div>
+                
+                <div class="mb-3">
+                    <label for="Apellido" class="form-label">Apellido</label>
+                    
+                        <input 
+                            type="text" 
+                            id="Apellido" 
+                            class="form-control" 
+                            name="Apellido" 
+                            value=>
+                    
+                </div>
+                
+                <div class="mb-3">
+                    <label for="Sexo" class="form-label">Sexo</label>
+                    
+                        <select 
+                            id="Sexo" 
+                            class="form-select" 
+                            name="Sexo">
+                            <option value="M">M</option>
+                            <option value="F">F</option>
+                        </select>
+                    
+                </div>
+                
+                <div class="mb-3">
+                    <label for="FechaNacimiento" class="form-label">FechaNacimiento</label>
+                    
+                        <input 
+                            type="date" 
+                            id="FechaNacimiento" 
+                            class="form-control" 
+                            name="FechaNacimiento" 
+                            value="">
+                    
+                </div>
+                
+                <div class="mb-3">
+                    <label for="Barrio" class="form-label">Barrio</label>
+             
+                        <input 
+                            type="text" 
+                            id="Barrio" 
+                            class="form-control" 
+                            name="Barrio" 
+                            value="">
+                    
+                </div>
+                
+                <div class="mb-3">
+                    <label for="Puesto" class="form-label">Puesto</label>
+                    
+                        <input 
+                            type="text" 
+                            id="Puesto" 
+                            class="form-control" 
+                            name="Puesto" 
+                            value="">
+                    
+                </div>
+                
+                <div class="mb-3">
+                    <label for="TipoTrabajo" class="form-label">Tipo de Trabajo</label>
+        
+                        <input 
+                            type="text" 
+                            id="TipoTrabajo" 
+                            class="form-control" 
+                            name="TipoTrabajo" 
+                            value="">
+                    
+                </div>
+                <!-- Botón para Enviar -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success">Registrar empleado</button>
+                    <a href="/" class="btn btn-secondary">Regresar</a>
+                </div>
+            </form>
+        </div>
+    <script src="/js/insertarEmp.js"></script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<%- include('partial/PageConfig', { title:"Lista de Empleados" }) %>
+<%- include('partial/Header') %>
+
+
+        <div class="d-flex py-2">
+            <span class="me-auto fs-3">Empleados</span>
+            <a href="/red/regEmp" class="btn btn-success">Registrar empleado</a>
+        </div>
+        <form action="/Empleados/getEmpleados/" method="get">
+            <div class="input-group">
+                <input class="form-control" type="text" id="id" name="id" placeholder="Busca un empleado por id">
+                <button class="btn btn-secondary" type="submit"> Buscar</button>
+            </div>  
+        </form>
+        <div class="mt-2 border shadow-lg">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Sexo</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Barrio</th>
+                        <th>Puesto</th>
+                        <th>Tipo de Trabajo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Empleados.forEach(empleado => { %>
+                    <tr>
+                        <td><%= empleado.ID %></td>
+                        <td><%= empleado.Nombre + ' ' + empleado.Apellido %></td>
+                        <td><%= empleado.Sexo %></td>
+                        <td><%= new Date(empleado.FechaNacimiento).toLocaleDateString() %></td>
+                        <td><%= empleado.Barrio %></td>
+                        <td><%= empleado.Puesto %></td>
+                        <td><%= empleado.TipoTrabajo %></td>
+                        <td><a href="/red/editarEmp/<%=empleado.ID%>" class="btn"><i class="bi bi-pencil-square"></i></a>  <a href="/red/elimEmp/<%=empleado.ID%>" class="btn"><i class="bi bi-trash"></i></a></td>
+                    <% });%>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

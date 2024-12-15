@@ -1,8 +1,9 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const RutaEmpleado = require('./src/routes/Empleados'); //Agregar rutas 
-const conn = require('./src/db/dbConfig') 
-
+const RutaRedireccion = require('./src/routes/Redirects');
+const path = require('path');
+const conn = require('./src/db/dbConfig');
 const app = express();
 
 
@@ -10,6 +11,10 @@ const app = express();
 //Handling termination 
 process.on('SIGINT', conn.shutdown);
 process.on('SIGTERM', conn.shutdown);
+
+//Engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 //Middleware
 app.use(express.json());
@@ -21,8 +26,13 @@ app.use((req, res, next) => {
     next();});
 
 //Routes
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/Empleados', RutaEmpleado);
+app.use('/red', RutaRedireccion);
+app.get('/', (req,res) => {
+    res.redirect('/Empleados/getEmpleados');
+})
 
 //Starting the server
-app.listen(3000,()=>{console.log("Listening on port 3000")})
+app.listen(3000,()=>{console.log("Listening on port 3000")});
 
